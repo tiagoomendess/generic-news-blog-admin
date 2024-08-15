@@ -846,12 +846,13 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     slug: Attribute.String &
       Attribute.Required &
+      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    picture: Attribute.Media<'images', true> &
+    picture: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -889,6 +890,13 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    metaDescription: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'-'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -930,7 +938,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     };
   };
   attributes: {
-    Name: Attribute.String &
+    name: Attribute.String &
       Attribute.Required &
       Attribute.Unique &
       Attribute.SetPluginOptions<{
@@ -963,6 +971,54 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::category.category'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiSettingSetting extends Schema.SingleType {
+  collectionName: 'settings';
+  info: {
+    singularName: 'setting';
+    pluralName: 'settings';
+    displayName: 'Setting';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    SiteName: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+        maxLength: 25;
+      }> &
+      Attribute.DefaultTo<'Blog'>;
+    SiteUrl: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 8;
+        maxLength: 30;
+      }> &
+      Attribute.DefaultTo<'http://localhost:5173'>;
+    SiteEmail: Attribute.Email &
+      Attribute.Required &
+      Attribute.DefaultTo<'test@example.com'>;
+    SiteSquareLogo: Attribute.Media<'images'>;
+    SiteHorizontalLogo: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::setting.setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::setting.setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1032,6 +1088,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
+      'api::setting.setting': ApiSettingSetting;
       'api::tag.tag': ApiTagTag;
     }
   }

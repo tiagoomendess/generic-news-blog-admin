@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings",
+  "info": {
+    "singularName": "setting",
+    "pluralName": "settings",
+    "displayName": "Setting",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SiteName": {
+      "type": "string",
+      "required": true,
+      "default": "Blog",
+      "maxLength": 25,
+      "minLength": 3
+    },
+    "SiteUrl": {
+      "type": "string",
+      "default": "http://localhost:5173",
+      "required": true,
+      "maxLength": 30,
+      "minLength": 8
+    },
+    "SiteEmail": {
+      "type": "email",
+      "default": "test@example.com",
+      "required": true
+    },
+    "SiteSquareLogo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
+    "SiteHorizontalLogo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
