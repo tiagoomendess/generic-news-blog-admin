@@ -1069,7 +1069,9 @@ export interface ApiSettingSetting extends Schema.SingleType {
       Attribute.Required &
       Attribute.DefaultTo<'test@example.com'>;
     SiteSquareLogo: Attribute.Media<'images'>;
-    SiteHorizontalLogo: Attribute.Media<'images'>;
+    HeaderImageForLightMode: Attribute.Media<'images'>;
+    HeaderImageForDarkMode: Attribute.Media<'images'>;
+    SiteFavIcon: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

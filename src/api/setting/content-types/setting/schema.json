@@ -32,19 +32,36 @@
       "required": true
     },
     "SiteSquareLogo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": false
-    },
-    "SiteHorizontalLogo": {
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
+      ]
+    },
+    "HeaderImageForLightMode": {
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "HeaderImageForDarkMode": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "SiteFavIcon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
