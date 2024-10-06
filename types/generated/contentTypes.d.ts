@@ -875,7 +875,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         'plugin::ckeditor.CKEditor',
         {
           output: 'HTML';
-          preset: 'standard';
+          preset: 'rich';
         }
       > &
       Attribute.SetPluginOptions<{

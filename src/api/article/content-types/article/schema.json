@@ -60,7 +60,7 @@
       "type": "customField",
       "options": {
         "output": "HTML",
-        "preset": "standard"
+        "preset": "rich"
       },
       "required": true,
       "customField": "plugin::ckeditor.CKEditor"
